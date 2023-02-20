@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "rare-journal-351008",
+  "private_key_id": "026eaab3cdcb95b33e9459619812fd9c963f25f1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8u+Z0GMuC2gKt\nJtOZXEMFZr7tZ69nKryhfmtpnN0QrmEwkgZLywr10hHIzLX8zJkhKKQE6nxbOXSK\nNarLWycoBoIDmMT5oVCumg1FrVCsUaw53kwcMyDtGVR0pUqplJUqr1RuQNx0CF0O\n1igFc5PQrDNhuTSJ08GNOneUgm6QsECC+47X/HDuitfDfCaRYULVq/vNuG4GW2Po\nLZATiLE3qV60g7Iv99MHYdDXeRAmUW0/s8vSIvwFzV3y9GrdootiXa1l8nOIGBLb\nZlBIeNrNvgxZ7+LFVtm9WDjJuI0Cnot2r8C5oERMXjvKFJo+ni9Et1u2u8CDw5gY\nn0oxvWR5AgMBAAECggEAA+VKALf5TWpkF0BfqkD4Bi7EfqB/A51jdt7l5zBsdLlw\nuqCs/hgDEidjpBYrpHvxpjhRSGOxrO1e7TJl49wuDvqxaNMYr8Fnaa822msVKPVn\nnWsr/YIFqjc1YdH+nEj7mj2zu7HdiwyYJSQA//nOgYZoaho5TiX/jwN3r+pQT262\nwOqb6t2TBtvQU15thIs7StetSwun3Ppi+Wn2APSdEpVauHWQfvtG/Xg3NvEVSSwL\n8Av4vtBwY3JSrFEbq0yndsS+h1fbkvga5KL/2KyzN0lOIwCQzkcckKB71m8dRWMn\nD0KvzaUVOmJoP8TkZT4A9fBEd6ZWYL/2QH0LWDTfLQKBgQD8Z2U1D8sP8TtTmNvD\nVKsbdLLZZbEXD5lEEE+/rAu1JuZYiwTp2NXKaXmRgwW7kv8J9vpuJeD01x241aO6\ncacJU8be60LneRZXQZ/pZcQ8QFgn9fi/pBM45a2oUIsWG2w3SpeKjULIzLIgxrDH\nVONi6oE9OugKbz+oUdxLjspdZQKBgQC/bEdTTiHJXs0v0t0oDnEEHjke3P3Aud55\nA9SmvTGQxiqHyEOzFskYIqubaihAg72rIcHHgDlI0w1MVSLlDJbsGHwpWOE9RW2I\njbslIzqf+We0W+JbUVkK6nyhzgPvEqSAF+S5op3xsBfa03wEF08ssEY4/lkHS/Jo\nVZW/5uTzhQKBgQCFmTDfyjFAif5N/G3uUSWUjcuQ+Juoyi/k8AFWQfmcdC+elE8Q\nfB6FWhjn5YMmSuNF4f2iSdhtoGNyD1rvd/LjI/3yxnIOVXB21RyQjLY28hP3auG0\nhmNKTYACxEcqd29rQMc/pg/Ae2CZqrGtgIgvNlMcFs71nvcB3/qL39PLZQKBgCwH\nWbh9hiPtHEDdvWSTPcd2tCi3J96GYfdvvB/F8HqeOfYVSA0PNp3Ii7QpjKyaIKwW\nDZ43jfWEJdDi3C3W4XfYgeZ4vQX8zB7Wiq8WFUvqb8H6SGw8n8B1AsmsuxboMNIN\nrNxN3QpUOIhqkGHYgquCuAQv7IZTH6SD2vfSweKJAoGBAPpsviVjf7u2dUOL9BBp\n1Yoas0mpEZZpLvn+mh6/RN602rLjF19UCMP/ongziFmVVVxeFOVo1xTn91SjkkK0\nFdBAtgrA78mB5cg62iIZYCR5a8fyKNCJstJkrbYWNqOkoD4uLwHjozCuPygpwuEL\nTpArOAjJ6QZJw9NKt8bdCFkJ\n-----END PRIVATE KEY-----\n",
+  "client_email": "trendyol-orders@rare-journal-351008.iam.gserviceaccount.com",
+  "client_id": "107854158618967625432",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/trendyol-orders%40rare-journal-351008.iam.gserviceaccount.com"
+}
