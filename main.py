@@ -4,7 +4,6 @@ import json
 from datetime import datetime
 import gspread
 import pytz
-import schedule
 import time
 from oauth2client.service_account import ServiceAccountCredentials
 
