@@ -36,6 +36,8 @@ def get_target_order():
 target_datetime = get_target_date()
 target_order = get_target_order()
 
+print('Target Date: ', target_datetime, 'Target Order', target_order)
+
 with requests.session() as session:
     response = session.post('https://auth.trendyol.com/login', headers=headers, json=json_data)
     access_token = response.json()['accessToken']
