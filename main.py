@@ -60,7 +60,7 @@ with requests.session() as session:
         len(order['items'])
         ]
         for order in result['orders'] if datetime.fromtimestamp(order['summary']['orderDate']/1000) > target_datetime and str(order['summary']['orderNumber']) != target_order]
-    
+    print('Orders: ', orders)
     pageNo = 2
     while hasNext and len(orders) == order_length:
         params['page'] = str(pageNo)
