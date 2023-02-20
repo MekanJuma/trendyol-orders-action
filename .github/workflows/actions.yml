@@ -23,6 +23,8 @@ jobs:
           pip install requests
           pip install gspread
           pip install oauth2client
+          pip install schedule
+          pip install pytz
 
       - name: execute py script # run main.py
         run: python main.py
