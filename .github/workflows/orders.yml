@@ -1,0 +1,31 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python script
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout repo content
+      uses: actions/checkout@v2 # checkout the repository content to github runner
+
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9" # install the python version needed
+
+    - name: install python packages
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requests
+        pip install gspread
+        pip install oauth2client
+
+    - name: execute py script # run main.py
+      run: python main.py
