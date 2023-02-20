@@ -51,6 +51,7 @@ with requests.session() as session:
     result = result['result']
     hasNext = result['hasNext']
     order_length = len(result['orders'])
+    print('order_length', order_length)
     orders = [
         [
         order['summary']['fullName'], 
