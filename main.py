@@ -4,8 +4,13 @@ import json
 from datetime import datetime
 import gspread
 import pytz
-import time
 from oauth2client.service_account import ServiceAccountCredentials
+
+
+scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+client = gspread.authorize(creds)
+sheet = client.open("Orders").sheet1 
 
 headers = {
     'authority': 'auth.trendyol.com',
@@ -58,40 +63,21 @@ params = {
 
 
 
-
-def track(data):
-    with open('tracker.json', 'w') as outfile:
-        json.dump(data, outfile)
-    
-    print('Saved tracker successfully!!')
-
 def save_data(orders):
-    scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
-    client = gspread.authorize(creds)
-    sheet = client.open("Orders").sheet1 
     sheet.append_rows(orders)   # Insert the list as a row at index 4
     print('Done!')
 
-def get_target_date():
-    with open('tracker.json', 'r') as f:
-        data = json.load(f)
+def get_targets():
+    data = sheet.get_all_records()
+    last_date = data[-1]['Order Date']
+    last_order = data[-1]['Order Number']
     
-    latest_date = data['LastDate']
-    l_d = datetime.strptime(latest_date, "%b %d, %Y %H:%M:%S")
-    l_d = l_d.replace(tzinfo=pytz.timezone('Europe/Istanbul'))
-    return l_d
-
-def get_target_order():
-    with open('tracker.json', 'r') as f:
-        data = json.load(f)
-    
-    return data['LastOrderNumber']
+    return [last_date, last_order]
 
 def main():
   print('Update started')
-  target_datetime = get_target_date()
-  target_order = get_target_order()
+  target_datetime = pytz.timezone('Europe/Istanbul').localize(datetime.strptime(get_targets()[0], "%b %d, %Y %H:%M:%S"))
+  target_order = str(get_targets()[1])
   
   with requests.session() as session:
       response = session.post('https://auth.trendyol.com/login', headers=headers, json=json_data)
@@ -146,13 +132,9 @@ def main():
               break
       
       if len(orders) > 0:
-          latest_date = max([datetime.strptime(i[2], "%b %d, %Y %H:%M:%S") for i in orders])
-          search = [index for index, order in enumerate(orders) if order[2] == latest_date.strftime("%b %d, %Y %H:%M:%S")]
-          latest_index = search[0] if len(search) != 0 else 0
-          latest_order = orders[latest_index][1]
+          
           orders = sorted(orders, key=lambda x: x[1])
           
-          track({'LastDate': latest_date.strftime("%b %d, %Y %H:%M:%S"), 'LastOrderNumber': latest_order})
           save_data(orders)
       else:
         print('No orders saved!')
@@ -160,4 +142,4 @@ def main():
 
 
 if __name__ == "__main__":
-  main()
+    main()
