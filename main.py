@@ -102,7 +102,7 @@ def main():
           ]
           for order in result['orders'] if datetime.fromtimestamp(order['summary']['orderDate']/1000, pytz.timezone('Europe/Istanbul')) > target_datetime and str(order['summary']['orderNumber']) != target_order]
   
-      print('Orders', orders)
+      # print('Orders', orders)
       pageNo = 2
       while hasNext and len(orders) == order_length:
           params['page'] = str(pageNo)
@@ -121,13 +121,14 @@ def main():
                   len(order['items'])
                   ]
                   for order in result_data['orders'] if datetime.fromtimestamp(order['summary']['orderDate']/1000, pytz.timezone('Europe/Istanbul')) > target_datetime and str(order['summary']['orderNumber']) != target_order]
-              if(length == len(orders_in)):
+              if len(orders_in) > 0:
                   orders.extend(orders_in)
-                  print('Page No: ', pageNo)
-                  pageNo += 1
-              else:
-                  print('No more orders')
-                  break
+                  if(length == len(orders_in)):
+                        print('Page No: ', pageNo)
+                        pageNo += 1
+                  else:
+                      print('No more orders')
+                      break
           else:
               print('Status code: ' + response.status_code, 'Message: ', response.content)
               break
