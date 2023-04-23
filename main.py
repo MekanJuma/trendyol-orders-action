@@ -77,6 +77,7 @@ def get_targets():
 def main():
   print('Update started')
   target_datetime = pytz.timezone('Europe/Istanbul').localize(datetime.strptime(get_targets()[0], "%b %d, %Y %H:%M:%S"))
+  print("Target Datetime: ", target_datetime)
   target_order = str(get_targets()[1])
   
   with requests.session() as session:
