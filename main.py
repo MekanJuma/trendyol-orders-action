@@ -93,17 +93,22 @@ class TrendyolOrders:
                 result_data = data['result']
                 hasNext = result_data['hasNext']
                 length = len(result_data['orders'])
-                orders_in = [
-                    [
-                        order['summary']['fullName'],
-                        order['summary']['orderNumber'],
-                        datetime.fromtimestamp(order['summary']['orderDate'] / 1000, pytz.timezone('Europe/Istanbul')).strftime("%b %d, %Y %H:%M:%S"),
-                        order['summary']['payment']['totalCharges'],
-                        len(order['items'])
-                    ]
-                    for order in result_data['orders']
-                    if datetime.fromtimestamp(order['summary']['orderDate'] / 1000, pytz.timezone('Europe/Istanbul')) > target_datetime and str(order['summary']['orderNumber']) != target_order
-                ]
+                orders_in = []
+
+                for order in result_data['orders']:
+                    if datetime.fromtimestamp(order['summary']['orderDate'] / 1000, pytz.timezone('Europe/Istanbul')) > target_datetime and str(order['summary']['orderNumber']) != target_order:
+                        full_name = order['summary']['fullName']
+                        order_number = order['summary']['orderNumber']
+                        order_date = datetime.fromtimestamp(order['summary']['orderDate'] / 1000, pytz.timezone('Europe/Istanbul')).strftime("%b %d, %Y %H:%M:%S")
+                        
+                        if status == 'Cancelled':
+                            refund_amount = sum(item['refundInfo']['amount'] for item in order['items'])
+                        else:
+                            refund_amount = order['summary']['payment']['totalCharges']
+
+                        order_length = len(order['items'])
+                        
+                        orders_in.append([full_name, order_number, order_date, refund_amount, order_length])
 
                 if len(orders_in) > 0:
                     orders.extend(orders_in)
@@ -124,6 +129,7 @@ class TrendyolOrders:
                 break
 
         return orders
+
     
     def process_orders(self, session, headers, sheet_name, status=None):
         orders_list = self.fetch_orders(session, headers, sheet_name, status)
