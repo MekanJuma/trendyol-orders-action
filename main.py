@@ -155,6 +155,6 @@ class TrendyolOrders:
 if __name__ == '__main__':
     app = TrendyolOrders('challenger9151@gmail.com', 'Atty1991')
     session, headers = app.authenticate()
-    app.process_orders(session, headers, sheet_name='Orders')
-    app.process_orders(session, headers, sheet_name='Returns', status='Claim')
+    # app.process_orders(session, headers, sheet_name='Orders')
+    # app.process_orders(session, headers, sheet_name='Returns', status='Claim')
     app.process_orders(session, headers, sheet_name='Cancelled', status='Cancelled')
