@@ -19,8 +19,8 @@ headers = {
 }
 
 json_data = {
-    'email': 'challenger9151@gmail.com',
-    'password': 'Atty1991',
+    'email': 'your email',
+    'password': 'your password',
 }
 
 headers_orders = {
